@@ -17,5 +17,5 @@ Vector matrix_vector_product(const Matrix& m1, const Vector& v1){
 		}
 		v2[i] = sum;
 	}
-	return c;
+	return v2;
 }

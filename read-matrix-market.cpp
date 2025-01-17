@@ -1,3 +1,19 @@
+/**
+ * @brief Reads a matrix from a Matrix Market file.
+ *
+ * This function reads a matrix stored in the Matrix Market format from a file. 
+ * It supports reading sparse matrices stored in coordinate format and returns 
+ * the matrix in a dense representation.
+ *
+ * @param filename The name of the Matrix Market file to be read.
+ * @return A dense matrix (2D vector of doubles) representing the data in the file.
+ *         The matrix will have dimensions \( M \times N \), with zeros filled in for 
+ *         missing entries in the sparse format.
+ *
+ * @note The function assumes the file exists and follows the Matrix Market format
+ *       specifications. It adjusts for 1-based indexing used in Matrix Market files.
+ */
+
 #include "mmio.h"
 #include <vector>
 #include <cstdlib>
@@ -11,7 +27,8 @@ Matrix read_matrix_market(const char* filename) {
 	MM_typecode matcode;
 	FILE* f;
 	int M, N, nz; 
-
+	
+	// Open the file
 	if ((f = fopen(filename, "r")) == nullptr) {
 		exit(1);
         	printf("Could not open file.");

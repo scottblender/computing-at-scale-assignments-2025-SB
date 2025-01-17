@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
 
     if (operation_type == 0) {
         // Read the matrix and vector
-        Matrix m1 = read_matrix_market(file1);
-        cout << "Matrix 1 loaded." << endl;
+        Matrix m1 = read_matrix_market(file1); // Read in the matrix file.
+        cout << "Matrix 1 loaded." << endl; 
 
-        Matrix v1 = read_matrix_market(file2);
+        Matrix v1 = read_matrix_market(file2); // Read in the vector file.
         cout << "Vector 1 loaded." << endl;
 	cout << "\n";
 
@@ -27,10 +27,13 @@ int main(int argc, char* argv[]) {
         exit(1);
     	}
 
-    	Vector v1_conv(v1.size());
-    	for (size_t i = 0; i < v1.size(); ++i) {
+    	Vector v1_conv(v1.size()); // define vector to store values from v1
+    	/*
+	 * This loop below takes values from v1 and stores them in a new vector to convert it to a 1D vector
+	 */
+	for (size_t i = 0; i < v1.size(); ++i) {
         	v1_conv[i] = v1[i][0];
-    	}
+    	} 
 	cout << "Input vector:" << endl;
         for (double val : v1_conv) {
             cout << val << endl;
@@ -44,7 +47,7 @@ int main(int argc, char* argv[]) {
         for (double val : result) {
             cout << val << endl;
         }
-	Matrix result_conv(result.size(), vector<double>(1));  // M rows, one column
+	Matrix result_conv(result.size(), vector<double>(1));  // Define matrix with M rows, one column to write out in matrix market format
     	for (size_t j = 0; j < result.size(); ++j) {
         	result_conv[j][0] = result[j];
     	}
@@ -53,13 +56,13 @@ int main(int argc, char* argv[]) {
     }
 
     else if(operation_type == 1){
-    	Matrix m1 = read_matrix_market(file1);
-	cout << "Matrix 1 loaded." << endl;
-        Matrix m2 = read_matrix_market(file2);
+    	Matrix m1 = read_matrix_market(file1); // Load in first matrix file
+	cout << "Matrix 1 loaded." << endl; 
+        Matrix m2 = read_matrix_market(file2); // Load in second matrix file
 	cout << "Matrix 2 loaded." << endl;
 	cout << "\n";
 
-        Matrix result = matrix_matrix_product(m1, m2);
+        Matrix result = matrix_matrix_product(m1, m2); // Perform the matrix-matrix product.
 	
 	// Output the result
     	cout << "Resultant matrix:" << endl;

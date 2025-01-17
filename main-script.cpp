@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "matrix-matrix-product.hpp"
 #include "matrix-vector-product.hpp"
 #include "read-matrix-market.hpp"

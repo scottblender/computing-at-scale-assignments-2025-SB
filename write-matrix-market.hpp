@@ -2,5 +2,4 @@
 
 typedef std::vector<std::vector<double>> Matrix;
 
-Matrix matrix_matrix_product(const Matrix& m1, const Matrix& m2);
-
+void write_matrix_market(const Matrix& res);

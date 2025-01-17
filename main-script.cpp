@@ -3,10 +3,11 @@
 #include "matrix-matrix-product.hpp"
 #include "matrix-vector-product.hpp"
 #include "read-matrix-market.hpp"
+#include "write-matrix-market.hpp"
 
 using namespace std;
-typedef vector<vector<int>> Matrix;
-typedef vector<int> Vector;
+typedef vector<vector<double>> Matrix;
+typedef vector<double> Vector;
 
 int main(int argc, char* argv[]) {
     const char* file1 = argv[1];
@@ -39,6 +40,11 @@ int main(int argc, char* argv[]) {
         for (int val : result) {
             cout << val << endl;
         }
+	Matrix result_conv(result.size(), vector<double>(1));  // M rows, one column
+    	for (size_t j = 0; j < result.size(); ++j) {
+        	result_conv[j][0] = result[j];
+    	}
+	write_matrix_market(result_conv);
     }
 
     else if(operation_type == 1){
@@ -57,6 +63,7 @@ int main(int argc, char* argv[]) {
         	}
 		cout << endl;
     	}
+	write_matrix_market(result);
     }
     return 0;
 }

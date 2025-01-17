@@ -5,7 +5,7 @@
 using namespace std;
 using std::vector;
 
-typedef vector<vector<int>> Matrix;
+typedef vector<vector<double>> Matrix;
 
 Matrix read_matrix_market(const char* filename) {
 	MM_typecode matcode;
@@ -30,12 +30,13 @@ Matrix read_matrix_market(const char* filename) {
     	}
 
     	// Initialize the matrix
-    	Matrix matrix(M, vector<int>(N, 0));
+    	Matrix matrix(M, vector<double>(N, 0));
 
     	// Read the entries
     	for (int i = 0; i < nz; ++i) {
-        	int row, col, value;
-        	if (fscanf(f, "%d %d %d\n", &row, &col, &value) != 3) {
+        	int row, col; 
+		double value;
+        	if (fscanf(f, "%d %d %lf\n", &row, &col, &value) != 3) {
             		exit(1);
             		printf("Error reading matrix entries.");
         	}

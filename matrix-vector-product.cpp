@@ -2,8 +2,8 @@
 
 using std::vector;
 
-typedef vector<vector<int>> Matrix;
-typedef vector<int> Vector;
+typedef vector<vector<double>> Matrix;
+typedef vector<double> Vector;
 
 Vector matrix_vector_product(const Matrix& m1, const Vector& v1){
 	int n = m1.size();
@@ -11,7 +11,7 @@ Vector matrix_vector_product(const Matrix& m1, const Vector& v1){
 	Vector v2(n);
 
 	for (int i = 0; i < n; ++i){
-		int sum = 0;
+		double sum = 0;
 		for (int j = 0; j < m; ++j){
 			sum = sum + m1[i][j] * v1[j];
 		}

@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
         	v1_conv[i] = v1[i][0];
     	}
 	cout << "Input vector:" << endl;
-        for (int val : v1_conv) {
+        for (double val : v1_conv) {
             cout << val << endl;
 	}
 	cout<<"\n";
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 
         // Output the result
         cout << "Resultant vector:" << endl;
-        for (int val : result) {
+        for (double val : result) {
             cout << val << endl;
         }
 	Matrix result_conv(result.size(), vector<double>(1));  // M rows, one column
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
 	// Output the result
     	cout << "Resultant matrix:" << endl;
     	for (const auto& row : result) {
-        	for (int val : row) {
+        	for (double val : row) {
 			cout << val << " ";
         	}
 		cout << endl;

@@ -21,9 +21,10 @@ int main(int argc, char* argv[]) {
 
         Matrix v1 = read_matrix_market(file2);
         cout << "Vector 1 loaded." << endl;
+	cout << "\n";
 
 	if (v1[0].size() != 1) {
-        cout << "Error: Input matrix is not a single-column matrix." << endl;
+        cout << "Error: Input matrix is not a single-column vector." << endl;
         exit(1);
     	}
 
@@ -31,7 +32,11 @@ int main(int argc, char* argv[]) {
     	for (size_t i = 0; i < v1.size(); ++i) {
         	v1_conv[i] = v1[i][0];
     	}
-
+	cout << "Input vector:" << endl;
+        for (int val : v1_conv) {
+            cout << val << endl;
+	}
+	cout<<"\n";
         // Perform matrix-vector product
         Vector result = matrix_vector_product(m1, v1_conv);
 
@@ -44,6 +49,7 @@ int main(int argc, char* argv[]) {
     	for (size_t j = 0; j < result.size(); ++j) {
         	result_conv[j][0] = result[j];
     	}
+	cout<<"\n";
 	write_matrix_market(result_conv);
     }
 
@@ -52,6 +58,7 @@ int main(int argc, char* argv[]) {
 	cout << "Matrix 1 loaded." << endl;
         Matrix m2 = read_matrix_market(file2);
 	cout << "Matrix 2 loaded." << endl;
+	cout << "\n";
 
         Matrix result = matrix_matrix_product(m1, m2);
 	
@@ -63,6 +70,7 @@ int main(int argc, char* argv[]) {
         	}
 		cout << endl;
     	}
+	cout<<"\n";
 	write_matrix_market(result);
     }
     return 0;

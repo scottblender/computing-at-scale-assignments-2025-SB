@@ -17,7 +17,6 @@ void write_matrix_market(const Matrix& res){
 	int columns =  res[0].size();
 	int nz = 0;	
 	cout << "Matrix dimensions: " << rows << " x " << columns << endl;
-    	cout << "Non-zero count: " << nz << endl;
 	mm_initialize_typecode(&matcode);
     	mm_set_matrix(&matcode);
     	mm_set_coordinate(&matcode);
@@ -31,7 +30,7 @@ void write_matrix_market(const Matrix& res){
             		}
         	}
     	}
-
+	cout << "Non-zero count: " << nz << endl;
 	mm_write_banner(stdout, matcode);
 	mm_write_mtx_crd_size(stdout, rows, columns, nz);
 	for (int i = 0; i < rows; ++i) {
